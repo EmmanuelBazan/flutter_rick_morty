@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rick_morty/app/presentation/pages/home/viewModel/home_view_model.dart';
+import 'package:rick_morty/app/presentation/pages/home/views/widgets/character_widget.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -37,7 +38,11 @@ class _HomeViewState extends State<HomeView> {
                   scrollDirection: Axis.vertical,
                   itemCount: viewModel.charactersList.length,
                   itemBuilder: (_, int index) {
-                    return Text(viewModel.charactersList[index].name);
+                    final character = viewModel.charactersList[index];
+                    return CharacterWidget(
+                        url: character.image,
+                        name: character.name,
+                        id: character.id);
                   }),
             )
           ],
