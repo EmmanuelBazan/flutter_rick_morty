@@ -22,8 +22,8 @@ class CharactersRepositoryImpl implements CharactersRepository {
   }
 
   @override
-  Future<List<Character>> searchCharacterByName(String name) {
-    // TODO: implement searchCharacterByName
-    throw UnimplementedError();
+  Future<List<Character>?> searchCharacterByName(String name) async {
+    final res = await _rickMortyApi.searchCharacterByName(name);
+    return res;
   }
 }

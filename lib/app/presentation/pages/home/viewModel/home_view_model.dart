@@ -30,8 +30,13 @@ class HomeViewModel extends ChangeNotifier {
     }
   }
 
-  Future<List<Character>> searchMovies(String query) async {
-    return [];
+  Future<List<Character>> searchMovies(String name) async {
+    final res = await charactersRepository.searchCharacterByName(name);
+    if (res != null) {
+      return res;
+    } else {
+      return [];
+    }
   }
 
   void getSuggestionByQuery(String searchQuery) {
