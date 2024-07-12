@@ -6,6 +6,7 @@ import 'package:rick_morty/app/data/repository_implementations/characters_reposi
 import 'package:rick_morty/app/data/services/remote/rick_morty_api.dart';
 import 'package:rick_morty/app/domain/repositories/characters_repository.dart';
 import 'package:rick_morty/app/my_app.dart';
+import 'package:rick_morty/app/presentation/pages/character/viewModel/character_view_model.dart';
 import 'package:rick_morty/app/presentation/pages/home/viewModel/home_view_model.dart';
 
 void main() {
@@ -19,6 +20,13 @@ void main() {
       providers: [
         ChangeNotifierProvider<HomeViewModel>(
           create: (_) => HomeViewModel(
+            CharactersRepositoryImpl(
+              RickMortyApi(http),
+            ),
+          ),
+        ),
+        ChangeNotifierProvider<CharacterViewModel>(
+          create: (_) => CharacterViewModel(
             CharactersRepositoryImpl(
               RickMortyApi(http),
             ),

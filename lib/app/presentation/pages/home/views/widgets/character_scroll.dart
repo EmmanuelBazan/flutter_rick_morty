@@ -42,9 +42,8 @@ class _CharacterScrollState extends State<CharacterScroll> {
                 itemBuilder: (_, int index) {
                   final character = widget.characters[index];
                   return CharacterWidget(
-                      url: character.image,
-                      name: character.name,
-                      id: character.id);
+                    character: character,
+                  );
                 }),
           )
         ],

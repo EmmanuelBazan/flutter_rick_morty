@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:rick_morty/app/data/services/remote/rick_morty_api.dart';
 import 'package:rick_morty/app/domain/models/character.dart';
 import 'package:rick_morty/app/domain/repositories/characters_repository.dart';
@@ -10,9 +8,9 @@ class CharactersRepositoryImpl implements CharactersRepository {
   CharactersRepositoryImpl(this._rickMortyApi);
 
   @override
-  Future<List<Character>> getCharacterById(Int id) {
-    // TODO: implement getCharacterById
-    throw UnimplementedError();
+  Future<Character?> getCharacterById(int id) async {
+    final res = await _rickMortyApi.getCharacterById(id);
+    return res;
   }
 
   @override

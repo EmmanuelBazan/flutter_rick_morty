@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rick_morty/app/domain/models/character.dart';
 import 'package:rick_morty/app/presentation/pages/home/viewModel/home_view_model.dart';
+import 'package:rick_morty/app/presentation/routes/routes.dart';
 
 class CharacterSearchDelegate extends SearchDelegate {
   @override
@@ -71,7 +72,6 @@ class _CharacterItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // currentCharacter.id = 'search-${currentMovie.id}';
     return ListTile(
       leading: Hero(
         tag: currentCharacter.id,
@@ -85,7 +85,8 @@ class _CharacterItem extends StatelessWidget {
       title: Text(currentCharacter.name),
       subtitle: Text(currentCharacter.status),
       onTap: () {
-        // Navigator.pushNamed(context, 'detailScreen', arguments: currentMovie);
+        Navigator.pushNamed(context, Routes.characterView,
+            arguments: currentCharacter);
       },
     );
   }

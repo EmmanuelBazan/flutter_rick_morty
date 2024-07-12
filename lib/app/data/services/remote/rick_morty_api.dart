@@ -39,4 +39,19 @@ class RickMortyApi {
       (characters) => characters,
     );
   }
+
+  Future<Character?> getCharacterById(int id) async {
+    final res = await _http.request(
+      '/api/character/$id',
+      (responseBody) => Character.fromMap(responseBody),
+    );
+
+    return res.when(
+      (failure) {
+        print('Error: ${failure.statuscode ?? failure.exception}');
+        return null;
+      },
+      (character) => character,
+    );
+  }
 }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rick_morty/app/presentation/pages/home/viewModel/home_view_model.dart';
 import 'package:rick_morty/app/presentation/pages/home/views/widgets/character_scroll.dart';
-import 'package:rick_morty/app/presentation/pages/home/views/widgets/character_widget.dart';
 import 'package:rick_morty/app/presentation/pages/home/views/widgets/search_delegate.dart';
 
 class HomeView extends StatefulWidget {
