@@ -10,7 +10,7 @@ import 'package:rick_morty/app/presentation/pages/home/viewModel/home_view_model
 
 void main() {
   final http = Http(
-    baseUrl: '',
+    baseUrl: 'https://rickandmortyapi.com',
     client: Client(),
   );
 

@@ -37,7 +37,7 @@ class _HomeViewState extends State<HomeView> {
                   scrollDirection: Axis.vertical,
                   itemCount: viewModel.charactersList.length,
                   itemBuilder: (_, int index) {
-                    return Text(viewModel.charactersList[index].toString());
+                    return Text(viewModel.charactersList[index].name);
                   }),
             )
           ],
