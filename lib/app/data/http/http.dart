@@ -11,14 +11,11 @@ part 'failure.dart';
 class Http {
   final String _baseUrl;
   final Client _client;
-  final String _apiKey;
 
   Http({
     required String baseUrl,
     required Client client,
-    required String apiKey,
   })  : _baseUrl = baseUrl,
-        _apiKey = apiKey,
         _client = client;
 
   Future<Either<HttpFailure, T>> request<T>(
@@ -33,11 +30,6 @@ class Http {
     Map<String, dynamic> logs = {};
     StackTrace? stackTrace;
     try {
-      queryParameters = {
-        ...queryParameters,
-        'api_key': _apiKey,
-      };
-
       Uri url = Uri.parse('$_baseUrl$path');
       if (queryParameters.isNotEmpty) {
         url = url.replace(queryParameters: queryParameters);

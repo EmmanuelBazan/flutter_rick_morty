@@ -1,17 +1,29 @@
+import 'dart:ffi';
+
+import 'package:rick_morty/app/data/services/remote/rick_morty_api.dart';
 import 'package:rick_morty/app/domain/models/character.dart';
 import 'package:rick_morty/app/domain/repositories/characters_repository.dart';
 
 class CharactersRepositoryImpl implements CharactersRepository {
-  @override
-  // TODO: implement characterById
-  Future<List<Character>> get characterById => throw UnimplementedError();
+  final RickMortyApi _rickMortyApi;
+
+  CharactersRepositoryImpl(this._rickMortyApi);
 
   @override
-  // TODO: implement characters
-  Future<List<Character>> get characters => throw UnimplementedError();
+  Future<List<Character>> getCharacterById(Int id) {
+    // TODO: implement getCharacterById
+    throw UnimplementedError();
+  }
 
   @override
-  // TODO: implement searcCharacterByName
-  Future<List<Character>> get searcCharacterByName =>
-      throw UnimplementedError();
+  Future<List<Character>?> getCharacters() async {
+    final res = await _rickMortyApi.getCharacters();
+    return res;
+  }
+
+  @override
+  Future<List<Character>> searchCharacterByName(String name) {
+    // TODO: implement searchCharacterByName
+    throw UnimplementedError();
+  }
 }
