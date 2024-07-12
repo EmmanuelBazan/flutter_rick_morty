@@ -16,8 +16,8 @@ class CharactersRepositoryImpl implements CharactersRepository {
   }
 
   @override
-  Future<List<Character>?> getCharacters() async {
-    final res = await _rickMortyApi.getCharacters();
+  Future<List<Character>?> getCharacters(int page) async {
+    final res = await _rickMortyApi.getCharacters(page);
     return res;
   }
 

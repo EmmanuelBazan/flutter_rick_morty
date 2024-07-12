@@ -22,8 +22,12 @@ class HomeViewModel extends ChangeNotifier {
 
   List<Character> charactersList = [];
 
+  int _currentPage = 0;
+
   getCharacters() async {
-    final res = await charactersRepository.getCharacters();
+    _currentPage++;
+
+    final res = await charactersRepository.getCharacters(_currentPage);
     if (res != null) {
       charactersList = [...charactersList, ...res];
       notifyListeners();

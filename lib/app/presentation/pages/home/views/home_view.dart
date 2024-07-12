@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rick_morty/app/presentation/pages/home/viewModel/home_view_model.dart';
+import 'package:rick_morty/app/presentation/pages/home/views/widgets/character_scroll.dart';
 import 'package:rick_morty/app/presentation/pages/home/views/widgets/character_widget.dart';
 import 'package:rick_morty/app/presentation/pages/home/views/widgets/search_delegate.dart';
 
@@ -12,54 +13,25 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  ScrollController scrollController = ScrollController();
-
-  @override
-  void initState() {
-    super.initState();
-    scrollController.addListener(() {
-      if (scrollController.position.pixels >=
-          scrollController.position.maxScrollExtent - 500) {}
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     final viewModel = Provider.of<HomeViewModel>(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
-        centerTitle: true,
-        elevation: 0,
-        actions: [
-          IconButton(
-              onPressed: () => showSearch(
-                  context: context, delegate: CharacterSearchDelegate()),
-              icon: const Icon(Icons.search))
-        ],
-      ),
-      body: Container(
-        width: double.infinity,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: ListView.builder(
-                  controller: scrollController,
-                  scrollDirection: Axis.vertical,
-                  itemCount: viewModel.charactersList.length,
-                  itemBuilder: (_, int index) {
-                    final character = viewModel.charactersList[index];
-                    return CharacterWidget(
-                        url: character.image,
-                        name: character.name,
-                        id: character.id);
-                  }),
-            )
+        appBar: AppBar(
+          title: const Text('Home'),
+          centerTitle: true,
+          elevation: 0,
+          actions: [
+            IconButton(
+                onPressed: () => showSearch(
+                    context: context, delegate: CharacterSearchDelegate()),
+                icon: const Icon(Icons.search))
           ],
         ),
-      ),
-    );
+        body: CharacterScroll(
+          characters: viewModel.charactersList,
+          onNextPage: viewModel.getCharacters,
+        ));
   }
 }
