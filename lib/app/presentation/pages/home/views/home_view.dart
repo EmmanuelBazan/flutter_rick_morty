@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:rick_morty/app/presentation/pages/home/viewModel/home_view_model.dart';
 import 'package:rick_morty/app/presentation/pages/home/views/widgets/character_scroll.dart';
 import 'package:rick_morty/app/presentation/pages/home/views/widgets/search_delegate.dart';
+import 'package:rick_morty/app/presentation/routes/routes.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -17,20 +18,26 @@ class _HomeViewState extends State<HomeView> {
     final viewModel = Provider.of<HomeViewModel>(context);
 
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Home'),
-          centerTitle: true,
-          elevation: 0,
-          actions: [
-            IconButton(
-                onPressed: () => showSearch(
-                    context: context, delegate: CharacterSearchDelegate()),
-                icon: const Icon(Icons.search))
-          ],
-        ),
-        body: CharacterScroll(
-          characters: viewModel.charactersList,
-          onNextPage: viewModel.getCharacters,
-        ));
+      appBar: AppBar(
+        title: const Text('Home'),
+        centerTitle: true,
+        elevation: 0,
+        actions: [
+          IconButton(
+              onPressed: () => showSearch(
+                  context: context, delegate: CharacterSearchDelegate()),
+              icon: const Icon(Icons.search))
+        ],
+      ),
+      body: CharacterScroll(
+        characters: viewModel.charactersList,
+        onNextPage: viewModel.getCharacters,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, Routes.seenView);
+        },
+      ),
+    );
   }
 }
