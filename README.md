@@ -16,7 +16,8 @@ Este proyecto utiliza la API de Rick and Morty. Puedes encontrar más informaci�
 
 Antes de poder ejecutar este proyecto, asegúrate de tener instalados los siguientes requisitos:
 
-- [Flutter](https://flutter.dev/docs/get-started/install) (al menos la versión 2.0.0)
+- [Flutter](https://flutter.dev/docs/get-started/install) (al menos la versión 3.22.1)
+- [FVM](https://fvm.app/docs/getting_started/installation) para gestionar versiones de Flutter
 - [Dart](https://dart.dev/get-dart)
 - Un editor de texto o IDE, como [VS Code](https://code.visualstudio.com/) o [Android Studio](https://developer.android.com/studio)
 - Un dispositivo físico o emulador para probar la aplicación
