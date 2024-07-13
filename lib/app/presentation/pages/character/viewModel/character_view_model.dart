@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rick_morty/app/domain/models/character.dart';
+import 'package:rick_morty/app/domain/models/full_location.dart';
 import 'package:rick_morty/app/domain/repositories/characters_repository.dart';
 
 class CharacterViewModel extends ChangeNotifier {
@@ -8,10 +9,19 @@ class CharacterViewModel extends ChangeNotifier {
   CharacterViewModel(this.charactersRepository);
 
   Character? character;
+  FullLocation? location;
+  FullLocation? origin;
 
-  getCharacter(int id) async {
-    final res = await charactersRepository.getCharacterById(id);
-    character = res;
+  getLocation(int id) async {
+    final res = await charactersRepository.getLocation(id);
+    location = res;
+    print("Location: ${res?.name}");
+    notifyListeners();
+  }
+
+  getOrigin(int id) async {
+    final res = await charactersRepository.getLocation(id);
+    origin = res;
     notifyListeners();
   }
 }

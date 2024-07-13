@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rick_morty/app/domain/models/character.dart';
+import 'package:rick_morty/app/presentation/pages/character/widgets/character_location.dart';
+import 'package:rick_morty/app/presentation/pages/character/widgets/character_origin.dart';
 
 class CharacterView extends StatelessWidget {
   const CharacterView({super.key});
@@ -68,22 +70,28 @@ class _PersonalInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            "Origin: ${origin.name}",
-            style: textTheme.headlineSmall,
-          ),
-          Text(
-            "Location: ${location.name}",
-            style: textTheme.headlineSmall,
-          )
+          location.url.isNotEmpty
+              ? CharacterLocation(
+                  location: location,
+                )
+              : Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: Text("Location: ${location.name}"),
+                ),
+          origin.url.isNotEmpty
+              ? CharacterOrigin(
+                  origin: origin,
+                )
+              : Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: Text("Origin: ${origin.name}"),
+                ),
         ],
       ),
     );
