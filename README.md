@@ -40,7 +40,7 @@ cd flutter_rick_morty
 Instala las dependencias del proyecto ejecutando el siguiente comando en la raíz del proyecto:
 
 ```sh
-flutter pub get
+fvm flutter pub get
 ```
 
 ### 3. Ejecutar el Proyecto
@@ -48,13 +48,13 @@ flutter pub get
 Para ejecutar el proyecto en un dispositivo emulado o físico, utiliza el siguiente comando:
 
 ```sh
-flutter run
+fvm flutter run
 ```
 
 Si tienes múltiples dispositivos conectados, puedes especificar el dispositivo de destino con el siguiente comando:
 
 ```sh
-flutter run -d <device_id>
+fvm flutter run -d <device_id>
 ```
 
 ## Estructura del Proyecto
