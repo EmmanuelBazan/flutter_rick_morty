@@ -30,8 +30,8 @@ Sigue estos pasos para configurar tu entorno y ejecutar el proyecto:
 Clona el repositorio en tu máquina local utilizando Git:
 
 ```sh
-git clone https://github.com/tu-usuario/tu-proyecto.git
-cd tu-proyecto
+git clone https://github.com/EmmanuelBazan/flutter_rick_morty.git
+cd flutter_rick_morty
 ```
 
 ### 2. Instalar Dependencias
